@@ -11,6 +11,19 @@ from scripts.spark import Spark
 import math
 import os
 
+WHITE = (255, 255, 255)
+BLACK = (0, 0, 0)
+BLUE = (0, 0, 255)
+GRAY = (200, 200, 200)
+RED = (200, 0, 0)
+MY=(139, 69, 19)
+ME=(101, 67, 33) 
+
+# Fonts
+
+
+
+
 class Game:
     def __init__(self):
 
@@ -87,10 +100,68 @@ class Game:
         self.tilemap = Tilemap(self, 16)
 
         # Load the starting level
+        
         self.level = 0
         self.load_level(self.level)
-
+        self.fontN = pygame.font.Font("data/font/2.ttf", 60)
+        self.fontH = pygame.font.Font("data/font/2.ttf", 90)
         self.screenshake = 0 # Timer for screen shake effect
+    def draw_text(self,text, x, y):
+        """Helper function to render text on the screen"""
+        self.text_surface = self.fontN.render(text, True, MY)
+        self.screen.blit(self.text_surface, (x, y))
+    def draw_head(self,text, x, y):
+        """Helper function to render text on the screen"""
+        self.text_surface = self.fontH.render(text, True, ME)
+        self.screen.blit(self.text_surface, (x, y))    
+        
+
+    def quit_confirmation_screen(self):
+        pygame.mixer.music.load('data/music.wav') # note that .wav files are the best for pygame sounds (issues arise with other file types)
+        pygame.mixer.music.set_volume(0.5)
+        pygame.mixer.music.play(-1) # play music on an endless loop
+        self.sfx['ambience'].play(-1)
+        """Displays the Quit Help Screen instead of quitting immediately"""
+        running = True
+        back_button = pygame.Rect(560, 265, 200, 50)
+        exit_button = pygame.Rect(560, 330, 200, 50)
+        help_button = pygame.Rect(560, 390, 200, 50)
+      
+
+        while running:
+            image = pygame.image.load('data/images/background/game.png')
+            image = pygame.transform.scale(image,(1280, 960) )
+            self.screen.fill(WHITE)
+            self.screen.blit(image, (0, 0))
+        # Quit Help Screen Text
+            self.draw_head("NINJA GAME", 400, 160)
+            
+
+        # Draw buttons
+           # pygame.draw.rect(self.screen, , back_button)
+           # pygame.draw.rect(self.screen, BLUE, exit_button)
+            #pygame.draw.rect(self.screen, BLUE, help_button)
+
+        # Draw button text
+            self.draw_text("START", 560, 265)
+            self.draw_text("EXIT", 560, 330)
+            self.draw_text("HELP", 560, 390)
+
+            pygame.display.flip()
+
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                   pygame.quit()
+                   exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if back_button.collidepoint(event.pos):
+                        running = False  # Return to main menu
+                    elif exit_button.collidepoint(event.pos):
+                        pygame.quit()
+                        exit()
+                elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
+                     running = False  # Pressing Esc returns to menu
+
 
     def run(self): # This is the game loop
 
@@ -328,5 +399,5 @@ class Game:
             else:
                 # Spawn enemies
                 self.enemies.append(Enemy(self,spawner['pos'],(8,15)))
-
+Game().quit_confirmation_screen()
 Game().run()
