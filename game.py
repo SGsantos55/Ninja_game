@@ -21,7 +21,7 @@ ME=(101, 67, 33)
 
 # Fonts
 
-
+is_helping=False
 
 
 class Game:
@@ -30,7 +30,7 @@ class Game:
         pygame.init()
 
         # set the window title        
-        pygame.display.set_caption('ninja game')
+        pygame.display.set_caption('Ninja Game')
 
         # set the screen resolution and game screen size
         SUPPORTED_RESOLUTIONS = {'960p': [(1280, 960), (320, 240)],
@@ -98,49 +98,95 @@ class Game:
         self.player = Player(self,(50,50),(8,15))
 
         self.tilemap = Tilemap(self, 16)
-
-        # Load the starting level
-        
         self.level = 0
         self.load_level(self.level)
         self.fontN = pygame.font.Font("data/font/2.ttf", 60)
         self.fontH = pygame.font.Font("data/font/2.ttf", 90)
+        self.fontI=pygame.font.Font("data/font/1.ttf", 60)
+        self.fontP=pygame.font.Font("data/font/3.ttf", 40)
         self.screenshake = 0 # Timer for screen shake effect
+    
+    
     def draw_text(self,text, x, y):
         """Helper function to render text on the screen"""
-        self.text_surface = self.fontN.render(text, True, MY)
+        self.text_surface = self.fontN.render(text, True, ME)
         self.screen.blit(self.text_surface, (x, y))
     def draw_head(self,text, x, y):
         """Helper function to render text on the screen"""
-        self.text_surface = self.fontH.render(text, True, ME)
+        self.text_surface = self.fontH.render(text, True, MY)
         self.screen.blit(self.text_surface, (x, y))    
+    def draw_help(self,text, x, y):
+        """Helper function to render text on the screen"""
+        self.text_surface = self.fontI.render(text, True, (255,255,255))
+        self.screen.blit(self.text_surface, (x, y))  
+    def draw_instructions(self,text, x, y):
+        """Helper function to render text on the screen"""
+        self.text_surface = self.fontP.render(text, True, (255,255,255))
+        self.screen.blit(self.text_surface, (x, y))       
+    
+    def draw_help_menu(self):
+        self.screen.fill((89, 65, 33))
+        self.draw_help("BACK", 20, 20)
+        back_button = pygame.Rect(20, 20, 200, 50)
+        self.draw_help("INSTRUCTIONS", 420, 100)
+        self.draw_instructions("i.  Press 'key-UP' to move up.", 220, 200)
+        self.draw_instructions("ii. Press 'key-DOWN' to move down.", 220, 250)
+        self.draw_instructions("iii.Press 'key-LEFT' to move left.", 220, 300)
+        self.draw_instructions("iv. Press 'key-RIGHT' to move right.", 220, 350)
+        self.draw_instructions("v.  Press 'X' to sabotage.", 220, 400)
+    
+        
+        
+        
+        self.draw_help("Developed By:-", 700, 600)
+        self.draw_instructions("i.keshar singh sunar.", 700, 670)
+        self.draw_instructions("ii.prasanna regmi.", 700, 720)
+        self.draw_instructions("iii.prabesh prajulee.", 700, 770)
+        self.draw_instructions("iv.santosh gadtaula.", 700, 820)
+
+       
+       # pygame.draw.rect(self.screen, BLUE, back_button)
         
 
+        helping = True
+        while helping:
+            for event in pygame.event.get():
+                if event.type == pygame.QUIT:
+                    pygame.quit()
+                    exit()
+                elif event.type == pygame.MOUSEBUTTONDOWN:
+                    if back_button.collidepoint(event.pos):
+                        helping = False  # Exit the help screen and return to main menu
+                        self.quit_confirmation_screen()
+                        self.run()  # Restart the game loop or return to main menu
+            pygame.display.flip()
+
+
     def quit_confirmation_screen(self):
-        pygame.mixer.music.load('data/music.wav') # note that .wav files are the best for pygame sounds (issues arise with other file types)
-        pygame.mixer.music.set_volume(0.5)
-        pygame.mixer.music.play(-1) # play music on an endless loop
+    # Start music only if not already playing to avoid overlapping
+        if not pygame.mixer.music.get_busy():
+            pygame.mixer.music.load('data/music.wav')
+            pygame.mixer.music.set_volume(0.5)
+            pygame.mixer.music.play(-1)
+
         self.sfx['ambience'].play(-1)
-        """Displays the Quit Help Screen instead of quitting immediately"""
+
         running = True
-        back_button = pygame.Rect(560, 265, 200, 50)
+        start_button = pygame.Rect(560, 265, 200, 50)
         exit_button = pygame.Rect(560, 330, 200, 50)
         help_button = pygame.Rect(560, 390, 200, 50)
-      
 
         while running:
             image = pygame.image.load('data/images/background/game.png')
-            image = pygame.transform.scale(image,(1280, 960) )
+            image = pygame.transform.scale(image, (1280, 960))
             self.screen.fill(WHITE)
             self.screen.blit(image, (0, 0))
-        # Quit Help Screen Text
             self.draw_head("NINJA GAME", 400, 160)
-            
 
         # Draw buttons
-           # pygame.draw.rect(self.screen, , back_button)
-           # pygame.draw.rect(self.screen, BLUE, exit_button)
-            #pygame.draw.rect(self.screen, BLUE, help_button)
+           # pygame.draw.rect(self.screen, BLUE, start_button)
+            #pygame.draw.rect(self.screen, BLUE, exit_button)
+           # pygame.draw.rect(self.screen, BLUE, help_button)
 
         # Draw button text
             self.draw_text("START", 560, 265)
@@ -154,13 +200,15 @@ class Game:
                    pygame.quit()
                    exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
-                    if back_button.collidepoint(event.pos):
-                        running = False  # Return to main menu
+                    if help_button.collidepoint(event.pos):
+                        self.draw_help_menu()
+                    elif start_button.collidepoint(event.pos):
+                        running = False
                     elif exit_button.collidepoint(event.pos):
-                        pygame.quit()
-                        exit()
+                       pygame.quit()
+                       exit()
                 elif event.type == pygame.KEYDOWN and event.key == pygame.K_ESCAPE:
-                     running = False  # Pressing Esc returns to menu
+                    running = False  # Pressing Esc returns to menu
 
 
     def run(self): # This is the game loop
@@ -188,7 +236,7 @@ class Game:
                     self.level = min(self.level + 1, len(os.listdir('data/maps'))-1)
                     self.load_level(self.level)
             if self.transition < 0:
-                self.transition += 1
+                self.transition += 2
 
             # Restart the level if the player dies
             if self.dead:
