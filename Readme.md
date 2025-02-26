@@ -53,10 +53,10 @@ through different levels while avoiding enemies and obstacles.</h4>
 
 
 <h2>Assets and Dependencies</h2>
-<h4>This game loads assets such as images, sound effects, and fonts from the 
-data directory.Ensure all necessary files are present.</h4>
+<h3>This game loads assets such as images, sound effects, and fonts from the 
+data directory.Ensure all necessary files are present.</h3>
 
 
-
+<br>
 <h2>Enjoy playing Ninja Game! 🎮</h2>
 
