@@ -103,7 +103,8 @@ class Game:
         self.fontN = pygame.font.Font("data/font/2.ttf", 60)
         self.fontH = pygame.font.Font("data/font/2.ttf", 90)
         self.fontI=pygame.font.Font("data/font/1.ttf", 60)
-        self.fontP=pygame.font.Font("data/font/3.ttf", 40)
+        self.fontP=pygame.font.Font("data/font/3.ttf", 50)
+        self.fontS=pygame.font.Font(None, 60)
         self.screenshake = 0 # Timer for screen shake effect
     
     
@@ -122,7 +123,11 @@ class Game:
     def draw_instructions(self,text, x, y):
         """Helper function to render text on the screen"""
         self.text_surface = self.fontP.render(text, True, (255,255,255))
-        self.screen.blit(self.text_surface, (x, y))       
+        self.screen.blit(self.text_surface, (x, y))   
+    def draw_developer(self,text, x, y):
+        self.text_surface = self.fontS.render(text, True, (255,255,255))
+        self.screen.blit(self.text_surface, (x, y))
+                
     
     def draw_help_menu(self):
         self.screen.fill((89, 65, 33))
@@ -134,7 +139,7 @@ class Game:
         self.draw_instructions("iii.Press 'key-LEFT' to move left.", 220, 300)
         self.draw_instructions("iv. Press 'key-RIGHT' to move right.", 220, 350)
         self.draw_instructions("v.  Press 'X' to sabotage.", 220, 400)
-    
+        self.draw_instructions("v.  Press 'ESC' to close the game.", 220, 450)
         
         
         
@@ -191,10 +196,10 @@ class Game:
             print()
             print()
             self.draw_text("Developed By:-", 700, 600)
-            self.draw_text("i.keshar singh sunar.", 700, 670)
-            self.draw_text("ii.prasanna regmi.", 700, 720)
-            self.draw_text("iii.prabesh prajulee.", 700, 770)
-            self.draw_text("iv.santosh gadtaula.", 700, 820)
+            self.draw_developer("i.Keshar Singh Sunar.", 700, 670)
+            self.draw_developer("ii.Prasanna Regmi.", 700, 720)
+            self.draw_developer("iii.Prabesh Prajulee.", 700, 770)
+            self.draw_developer("iv.Santosh Gadtaula.", 700, 820)
 
             pygame.display.flip()
 
