@@ -19,6 +19,7 @@ through different levels while avoiding enemies and obstacles.</h4>
 <br>
 <h2>Clone the Repository</h2>
 <h3>git clone https://github.com/yourusername/NinjaGame.git</h3>
+<br>
 
 
 
