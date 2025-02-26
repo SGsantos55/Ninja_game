@@ -48,7 +48,7 @@ class Game:
         SCREEN_RESOLUTION = SUPPORTED_RESOLUTIONS[RESOLUTION][0]
         GRAPHICS_DISPLAY_SIZE = SUPPORTED_RESOLUTIONS[RESOLUTION][1]
 
-        self.screen = pygame.display.set_mode(SCREEN_RESOLUTION) # This is what is shown on the computer screen
+        self.screen = pygame.display.set_mode(SCREEN_RESOLUTION) #SCREEN_RESOLUTION This is what is shown on the computer screen
         self.display = pygame.Surface(GRAPHICS_DISPLAY_SIZE, pygame.SRCALPHA) # This is the game graphics display
         self.display_2 = pygame.Surface(GRAPHICS_DISPLAY_SIZE) # This surface is used to create the "outlines" effect
 
@@ -138,11 +138,7 @@ class Game:
         
         
         
-        self.draw_help("Developed By:-", 700, 600)
-        self.draw_instructions("i.keshar singh sunar.", 700, 670)
-        self.draw_instructions("ii.prasanna regmi.", 700, 720)
-        self.draw_instructions("iii.prabesh prajulee.", 700, 770)
-        self.draw_instructions("iv.santosh gadtaula.", 700, 820)
+
 
        
        # pygame.draw.rect(self.screen, BLUE, back_button)
@@ -192,6 +188,13 @@ class Game:
             self.draw_text("START", 560, 265)
             self.draw_text("EXIT", 560, 330)
             self.draw_text("HELP", 560, 390)
+            print()
+            print()
+            self.draw_text("Developed By:-", 700, 600)
+            self.draw_text("i.keshar singh sunar.", 700, 670)
+            self.draw_text("ii.prasanna regmi.", 700, 720)
+            self.draw_text("iii.prabesh prajulee.", 700, 770)
+            self.draw_text("iv.santosh gadtaula.", 700, 820)
 
             pygame.display.flip()
 
