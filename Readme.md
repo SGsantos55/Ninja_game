@@ -32,10 +32,10 @@ through different levels while avoiding enemies and obstacles.</h4>
 <li>Open Help Menu: Click HELP in the main menu</li>
 
 </ol>
+<br>
 <h2>Running the Game</h2><br>
 <h4>cd Ninja-game</ol></h4>
 <h4>python main.py</h4>
-
 <h2>Game Developers</h2>
 <ol>
 <li>Keshar Singh Sunar</li>
