@@ -52,5 +52,5 @@ Ensure all necessary files are present.</h4>
 
 
 
-<h3>Enjoy playing Ninja Game! 🎮</h3>
+<h2>Enjoy playing Ninja Game! 🎮</h2>
 
