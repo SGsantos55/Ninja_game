@@ -14,7 +14,7 @@ through different levels while avoiding enemies and obstacles.</h4>
 <h2>Installation</h2>
 
 <h2>Prerequisites<h2>
-Ensure you have Python and Pygame installed.
+Ensure you have Python and Pygame installed.<br>
 pip install pygame
 
 <h2>Clone the Repository</h2><br>
