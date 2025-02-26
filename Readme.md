@@ -14,8 +14,10 @@ through different levels while avoiding enemies and obstacles.</h4>
 <h2>Installation</h2>
 
 <h2>Prerequisites<h2>
-<h4>Ensure you have Python and Pygame installed.</h4>
-<h4>pip install pygame</h4>
+<ol>
+  <li>python interprter</li>
+  <li>pygame module</li>
+</ol>
 <br>
 <h2>Clone the Repository</h2>
 <h3>git clone https://github.com/yourusername/NinjaGame.git</h3>
@@ -35,8 +37,12 @@ through different levels while avoiding enemies and obstacles.</h4>
 </ol>
 <br>
 <h2>Running the Game</h2>
-<h4>cd Ninja-game</h4>
-<h4>python main.py</h4><br>
+<ol>
+  <li>install python from python.org</li>
+  <li>install pip</li>
+  <li>pip install pygame</li>
+  <li>python game.py</li>
+</ol>
 <h2>Game Developers</h2>
 <ol>
 <li>Keshar Singh Sunar</li>
