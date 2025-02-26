@@ -11,7 +11,7 @@ through different levels while avoiding enemies and obstacles.</h3>
 <li>Multiple resolution support.</li>
 <li>Help menu and instructions for controls.</li>
 </ol>
-<h2>Installation</h2>
+
 
 <h2>Prerequisites</h2>
 <ol>
