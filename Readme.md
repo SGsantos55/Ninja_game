@@ -15,7 +15,7 @@ through different levels while avoiding enemies and obstacles.</h4>
 
 <h2>Prerequisites<h2>
 <h3>Ensure you have Python and Pygame installed.</h3>
-<h3></h3>pip install pygame</h3>
+<h3>pip install pygame</h3>
 
 <h2>Clone the Repository</h2>
 <h3>git clone https://github.com/yourusername/NinjaGame.git</h3>
