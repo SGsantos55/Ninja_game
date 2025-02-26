@@ -1,6 +1,6 @@
 <h1>Ninja Game</h1>
-<h4>A 2D platformer game built using Pygame, featuring a ninja protagonist navigating 
-through different levels while avoiding enemies and obstacles.</h4>
+<h3>A 2D platformer game built using Pygame, featuring a ninja protagonist navigating 
+through different levels while avoiding enemies and obstacles.</h3>
 
 <h2>Features</h2>
 <ol>
