@@ -33,9 +33,9 @@ through different levels while avoiding enemies and obstacles.</h4>
 
 </ol>
 <br>
-<h2>Running the Game</h2><br>
-<h4>cd Ninja-game</ol></h4>
-<h4>python main.py</h4>
+<h2>Running the Game</h2>
+<h4>cd Ninja-game</h4>
+<h4>python main.py</h4><br>
 <h2>Game Developers</h2>
 <ol>
 <li>Keshar Singh Sunar</li>
