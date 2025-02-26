@@ -102,9 +102,10 @@ class Game:
         self.load_level(self.level)
         self.fontN = pygame.font.Font("data/font/2.ttf", 60)
         self.fontH = pygame.font.Font("data/font/2.ttf", 90)
-        self.fontI=pygame.font.Font("data/font/1.ttf", 60)
-        self.fontP=pygame.font.Font("data/font/3.ttf", 50)
-        self.fontS=pygame.font.Font(None, 60)
+        self.fontI=pygame.font.Font("data/font/2.ttf", 60)
+        self.fontP=pygame.font.Font("data/font/6.ttf", 50)
+        self.fontS=pygame.font.Font("data/font/5.ttf", 40)
+        self.fontD=pygame.font.Font("data/font/6.ttf", 70)
         self.screenshake = 0 # Timer for screen shake effect
     
     
@@ -122,33 +123,28 @@ class Game:
         self.screen.blit(self.text_surface, (x, y))  
     def draw_instructions(self,text, x, y):
         """Helper function to render text on the screen"""
-        self.text_surface = self.fontP.render(text, True, (255,255,255))
+        self.text_surface = self.fontP.render(text, True,(216,191,145))
         self.screen.blit(self.text_surface, (x, y))   
     def draw_developer(self,text, x, y):
-        self.text_surface = self.fontS.render(text, True, (255,255,255))
+        self.text_surface = self.fontS.render(text, True, (86,170,136))
         self.screen.blit(self.text_surface, (x, y))
+    def draw_develop(self,text, x, y):
+        self.text_surface = self.fontD.render(text, True, (176,97,71))
+        self.screen.blit(self.text_surface, (x, y))    
                 
     
     def draw_help_menu(self):
-        self.screen.fill((89, 65, 33))
+        self.screen.fill((62,32,21))
+        back_button = pygame.Rect(10, 20, 145, 60)
+        pygame.draw.rect(self.screen, (101, 67, 33) , back_button)
         self.draw_help("BACK", 20, 20)
-        back_button = pygame.Rect(20, 20, 200, 50)
         self.draw_help("INSTRUCTIONS", 420, 100)
-        self.draw_instructions("i.  Press 'key-UP' to move up.", 220, 200)
-        self.draw_instructions("ii. Press 'key-DOWN' to move down.", 220, 250)
-        self.draw_instructions("iii.Press 'key-LEFT' to move left.", 220, 300)
-        self.draw_instructions("iv. Press 'key-RIGHT' to move right.", 220, 350)
-        self.draw_instructions("v.  Press 'X' to sabotage.", 220, 400)
-        self.draw_instructions("v.  Press 'ESC' to close the game.", 220, 450)
+        self.draw_instructions("a.Press 'key-UP' or 'W' to move up.", 220, 200)
+        self.draw_instructions("b.Press 'key-LEFT' or 'A' to move left.", 220, 250)
+        self.draw_instructions("c.Press 'key-RIGHT' or 'D' to move right.", 220, 300)
+        self.draw_instructions("d.Press 'X' to sabotage.", 220, 350)
+        self.draw_instructions("e.Press 'ESC' to close the game.", 220, 400)
         
-        
-        
-
-
-       
-       # pygame.draw.rect(self.screen, BLUE, back_button)
-        
-
         helping = True
         while helping:
             for event in pygame.event.get():
@@ -157,7 +153,9 @@ class Game:
                     exit()
                 elif event.type == pygame.MOUSEBUTTONDOWN:
                     if back_button.collidepoint(event.pos):
-                        helping = False  # Exit the help screen and return to main menu
+                        helping = False
+                        pygame.time.delay(200) 
+                         # Exit the help screen and return to main menu
                         self.quit_confirmation_screen()
                         self.run()  # Restart the game loop or return to main menu
             pygame.display.flip()
@@ -195,11 +193,11 @@ class Game:
             self.draw_text("HELP", 560, 390)
             print()
             print()
-            self.draw_text("Developed By:-", 700, 600)
-            self.draw_developer("i.Keshar Singh Sunar.", 700, 670)
-            self.draw_developer("ii.Prasanna Regmi.", 700, 720)
-            self.draw_developer("iii.Prabesh Prajulee.", 700, 770)
-            self.draw_developer("iv.Santosh Gadtaula.", 700, 820)
+            self.draw_develop("Developed By:-", 850, 700)
+            self.draw_developer("i.Keshar Singh Sunar.", 850, 770)
+            self.draw_developer("ii.Prasanna Regmi.", 850, 810)
+            self.draw_developer("iii.Prabesh Prajulee.", 850, 850)
+            self.draw_developer("iv.Santosh Gadtaula.", 850, 890)
 
             pygame.display.flip()
 
