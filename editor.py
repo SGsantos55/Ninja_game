@@ -13,7 +13,7 @@ class Editor:
 
         
         pygame.display.set_caption('level editor')
-        self.screen = pygame.display.set_mode((640,480)) # This is what is shown on the computer screen
+        self.screen = pygame.display.set_mode((800,600)) # This is what is shown on the computer screen
 
         self.display = pygame.Surface((320,240)) # This is the game graphics display
 
