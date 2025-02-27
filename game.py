@@ -191,13 +191,7 @@ class Game:
             self.draw_text("START", 560, 265)
             self.draw_text("EXIT", 560, 330)
             self.draw_text("HELP", 560, 390)
-            print()
-            print()
-            self.draw_develop("Developed By:-", 850, 700)
-            self.draw_developer("i.Keshar Singh Sunar.", 850, 770)
-            self.draw_developer("ii.Prasanna Regmi.", 850, 810)
-            self.draw_developer("iii.Prabesh Prajulee.", 850, 850)
-            self.draw_developer("iv.Santosh Gadtaula.", 850, 890)
+           
 
             pygame.display.flip()
 
